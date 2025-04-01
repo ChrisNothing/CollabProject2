@@ -6,7 +6,7 @@ Dave or Chris
 
 Task 1
 -	DC
-  -Done Both
+  - Done Both
  	
 Task 2
 -	DC
