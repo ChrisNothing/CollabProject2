@@ -99,6 +99,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DB_CE_Project2.cpp" />
+    <ClCompile Include="Standards.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Standards.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

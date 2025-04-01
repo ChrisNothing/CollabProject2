@@ -18,5 +18,13 @@
     <ClCompile Include="DB_CE_Project2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Standards.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Standards.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
