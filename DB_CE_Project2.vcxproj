@@ -104,6 +104,12 @@
   <ItemGroup>
     <ClInclude Include="Standards.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="dictionary345.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

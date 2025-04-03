@@ -14,13 +14,17 @@
 #ifndef Standards_h
 #define Standards_h
 
+#include <algorithm>
+#include <cmath>
 #include <ctime>
 #include <fstream>
 #include <iomanip>
 #include <iostream>
 #include <limits>
 #include <list>
+#include <queue>
 #include <string>
+#include <vector>
 
 using namespace std;
 
