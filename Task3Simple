@@ -55,3 +55,84 @@ int main()
 }
 
 */
+
+Tasks 4.
+
+/*
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+// Function to find all valid transformations of a word
+vector<string> findValidWords(const string& word, const vector<string>& wordList)
+{
+    vector<string> validWords;
+
+    // Iterate through each position of the word
+    for (int counterForLoop = 0; counterForLoop < word.length(); counterForLoop++)
+    {
+        // Try replacing the character at position counterForLoop with all letters from 'a' to 'z'
+        for (char charMajor = 'a'; charMajor <= 'z'; charMajor++)
+        {
+            if (charMajor == word[counterForLoop])
+            {
+                continue; // Skip the character if it's the same as the current one
+            }
+
+            // Create a new word by replacing the character at position counterForLoop
+            string transformed = word;
+            transformed[counterForLoop] = charMajor;
+
+            // Check if the transformed word exists in the wordList
+            bool found = false;
+
+
+            for (size_t sizeCounter = 0; sizeCounter < wordList.size(); sizeCounter++)
+            {
+                if (transformed == wordList[sizeCounter])
+                {
+                    //Chatgpt gave me (Chris) this nice little function. Need to ask if this is okay.
+                    validWords.push_back(transformed);
+                    found = true;
+                    break;
+                }
+            }
+        }
+    }
+
+    return validWords;
+}
+
+int main()
+{
+    // Example word list
+    vector<string> wordList = { "fend", "bend", "rend", "bare", "fire", "tear", "care", "mare","land", "lens", "pend", "send", "tend", "bore", "more", "shore", "four", "pour", "sore", "core", "rope", "hope", "kope", "vote", "note", "wore", "lake", "fake", "cake", "mint", "hint", "link", "tank", "mask", "bark", "park", "warp", "cart", "dart", "star", "char" };
+
+    // Test word
+    string initialWord = "Hare";
+
+    // Find valid words
+    vector<string> validWords = findValidWords(initialWord, wordList);
+
+    // Display the results
+    cout << "We will be using the word '" << initialWord << "':" << endl;
+    cout << "With the list provided we will begin to see if there's any word with a mismatch letter. " << endl;
+
+    if (validWords.empty())
+    {
+        cout << "No valid mismatched words found." << endl;
+    }
+    else
+    {
+        for (size_t sizeCounter = 0; sizeCounter < validWords.size(); sizeCounter++)
+        {
+            cout << validWords[sizeCounter] << endl;
+        }
+    }
+
+    return 0;
+}
+
+*/
