@@ -35,6 +35,8 @@
 // User-Defined Function Prototypes
 //-------------------------------------------------------------------------------------------------
 
+void getInput(string startingWord, string endingWord);
+
 void radixSort(vector<string>& arr);
 
 //-------------------------------------------------------------------------------------------------
@@ -76,6 +78,24 @@ int main(void)
 //-------------------------------------------------------------------------------------------------
 // User-Defined Function Definitions
 //-------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------
+// Function - getInput
+// 
+// Get a starting word and an ending word from the user, checking for matching lengths.
+//-------------------------------------------------------------------------------------------------
+void getInput(string startingWord, string endingWord)
+{
+
+    //Do loop to execute until the two words are the same length.
+    do
+    {
+
+
+
+    } while (startingWord.length() != endingWord.length());
+
+}
 
 //-------------------------------------------------------------------------------------------------
 // Function - radixSort
@@ -151,7 +171,7 @@ void radixSort(vector<string>& arr)
                 //Also update the index for the next word to be copied to.
                 arr[index++] = queue.front();
 
-                //Pop the top word out of the current bucket
+                //Pop the top word out of the current bucket.
                 queue.pop();
 
             }
