@@ -19,6 +19,8 @@
 
 #include "Standards.h"
 
+#include "bremerdw_testclass.h"
+
 //-------------------------------------------------------------------------------------------------
 // Global Constant Definitions
 //-------------------------------------------------------------------------------------------------
@@ -28,16 +30,6 @@
 //-------------------------------------------------------------------------------------------------
 // Global Variable Definitions
 //-------------------------------------------------------------------------------------------------
-
-
-
-//-------------------------------------------------------------------------------------------------
-// User-Defined Function Prototypes
-//-------------------------------------------------------------------------------------------------
-
-void getInput(string& startingWord, string& endingWord);
-
-void radixSort(vector<string>& arr);
 
 //-------------------------------------------------------------------------------------------------
 // Main Function
@@ -52,6 +44,14 @@ int main(void)
 
     //TEST: Vector of arrays to text the radix sort.
     vector<string> arr{ "FUNNY", "BRIDE", "BRUTE", "KIND", "SHIRT", "AID", "FOUR", "TAIL" };
+
+    bremerdw_testclass bremerdw_tests;
+
+    //---------------------------------------------------------------------------------------------
+    // Test Execution
+    //---------------------------------------------------------------------------------------------
+
+    bremerdw_tests.bremerdw_RunAllTests();
 
     //---------------------------------------------------------------------------------------------
     // Opening Statements
@@ -90,6 +90,16 @@ void getInput(string& startingWord, string& endingWord)
     //Do loop to execute until the two words are the same length.
     do
     {
+
+        //Query the user for the starting word.
+        cout << "Please enter the starting word in ALL CAPS with no special characters: ";
+        getline(cin, startingWord, '\n');
+        cout << endl;
+
+        //Query the user for the ending word.
+        cout << "Please enter the ending word in ALL CAPS with no special characters:   ";
+        getline(cin, endingWord, '\n');
+        cout << endl;
 
 
 
@@ -179,5 +189,29 @@ void radixSort(vector<string>& arr)
         }
 
     }
+
+}
+
+//-------------------------------------------------------------------------------------------------
+// Function - isAllCaps
+// 
+// Check if the passed-in word consists entirely of capital letters and returns true if it does.
+//-------------------------------------------------------------------------------------------------
+bool isAllCaps(string wordToCheck)
+{
+
+    for (int i = 0; i < wordToCheck.length(); i++)
+    {
+
+        if ((wordToCheck[i] < 65) && (wordToCheck[i] > 90))
+        {
+
+            return false;
+
+        }
+
+    }
+
+    return true;
 
 }
