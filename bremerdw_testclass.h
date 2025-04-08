@@ -6,23 +6,16 @@
 //Programmers: David Bremer
 // 
 //Header File Contains:
-//  Class Definition for Class "bremerdw_testclass"
+//  Class Definition for Class "bremerdw_testclass".
 //-------------------------------------------------------------------------------------------------
 
 #pragma once
 
-#ifndef TestClass_h
-#define TestClass_h
+#ifndef bremerdw_testclass_h
+#define bremerdw_testclass_h
 
 #include "Standards.h"
-
-#include "DB_CE_Project2.h"
-
-//-------------------------------------------------------------------------------------------------
-// Constant Declaration
-//-------------------------------------------------------------------------------------------------
-
-
+#include "Functions.h"
 
 //-------------------------------------------------------------------------------------------------
 // Class Definition
@@ -37,9 +30,10 @@ public:
     // Class Test Methods
     //---------------------------------------------------------------------------------------------
 
+    bool bremerdw_Test_radixSort(void);
     bool bremerdw_Test_isAllCaps(void);
 
-    void bremerdw_RunAllTests(void);
+    bool bremerdw_RunAllTests(void);
 
 };
 

@@ -6,24 +6,35 @@
 //Programmers: David Bremer & Chris Ellenberger
 // 
 //Header File Contains:
-//  Necessary for calling functions in the main .cpp file from within test classes.
+//  Class Definition for Class "Functions".
 //-------------------------------------------------------------------------------------------------
 
 #pragma once
 
-#ifndef DB_CE_Project2_h
-#define DB_CE_Project2_h
+#ifndef Functions_h
+#define Functions_h
 
 #include "Standards.h"
 
 //-------------------------------------------------------------------------------------------------
-// User-Defined Function Prototypes
+// Class Definition
 //-------------------------------------------------------------------------------------------------
 
-void getInput(string& startingWord, string& endingWord);
+class Functions
+{
 
-void radixSort(vector<string>& arr);
+public:
 
-bool isAllCaps(string wordToCheck);
+	//-------------------------------------------------------------------------------------------------
+	// Other Public Methods
+	//-------------------------------------------------------------------------------------------------
+
+	void getInput(string& startingWord, string& endingWord);
+
+	void radixSort(vector<string>& arr);
+
+	bool isAllCaps(string wordToCheck);
+
+};
 
 #endif

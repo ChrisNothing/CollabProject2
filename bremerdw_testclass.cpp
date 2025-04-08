@@ -6,10 +6,8 @@
 //Programmers: David Bremer
 // 
 //Source File Contains:
-//	Multi-line member functions for Class "bremerdw_testclass"
+//	Multi-line member functions for Class "bremerdw_testclass".
 //-------------------------------------------------------------------------------------------------
-
-#include "Standards.h"
 
 #include "bremerdw_testclass.h"
 
@@ -18,20 +16,48 @@
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
+// Function - bremerdw_Test_radixSort
+// 
+// Method for testing function "radixSort".
+//-------------------------------------------------------------------------------------------------
+bool bremerdw_testclass::bremerdw_Test_radixSort(void)
+{
+
+	vector<string> arrOld{ "FUNNY", "BRIDE", "BRUTE", "KIND", "SHIRT", "AID", "FOUR", "TAIL" };
+	vector<string> arrNew{ "AID", "BRIDE", "BRUTE", "FOUR", "FUNNY", "KIND", "SHIRT", "TAIL" };
+
+	Functions testObject;
+
+	testObject.radixSort(arrOld);
+
+	if (arrOld == arrNew)
+	{
+
+		return true;
+
+	}
+
+	return false;
+
+}
+
+//-------------------------------------------------------------------------------------------------
 // Function - bremerdw_Test_isAllCaps
 // 
-// Method for testing function "bremerdw_Test_isAllCaps".
+// Method for testing function "isAllCaps".
 //-------------------------------------------------------------------------------------------------
-bool bremerdw_Test_isAllCaps(void)
+bool bremerdw_testclass::bremerdw_Test_isAllCaps(void)
 {
 
 	string testString1 = "Test";
 	string testString2 = "TEST";
 	string testString3 = "TEST ";
 
-	if ((isAllCaps(testString1) == false) &&
-		(isAllCaps(testString2) == true) &&
-		(isAllCaps(testString3) == false))
+	Functions testObject;
+
+	if ((testObject.isAllCaps(testString1) == false) &&
+		(testObject.isAllCaps(testString2) == true) &&
+		(testObject.isAllCaps(testString3) == false))
 	{
 
 		return true;
@@ -47,8 +73,15 @@ bool bremerdw_Test_isAllCaps(void)
 // 
 // Method for testing function "bremerdw_Test_isAllCaps".
 //-------------------------------------------------------------------------------------------------
-void bremerdw_RunAllTests(void)
+bool bremerdw_testclass::bremerdw_RunAllTests(void)
 {
+
+	if (bremerdw_Test_radixSort() == false)
+	{
+
+		cout << "The function 'radixSort' failed its test." << endl;
+
+	}
 
 	if (bremerdw_Test_isAllCaps() == false)
 	{
@@ -56,5 +89,15 @@ void bremerdw_RunAllTests(void)
 		cout << "The function 'isAllCaps' failed its test." << endl;
 
 	}
+
+	if ((bremerdw_Test_radixSort() == false) ||
+		(bremerdw_Test_isAllCaps() == false))
+	{
+
+		return false;
+
+	}
+
+	return true;
 
 }
