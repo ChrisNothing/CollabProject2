@@ -71,7 +71,7 @@ int main(void)
     for (const auto& element : arr) { cout << element << " "; }
     cout << endl;
 
-	return 0;
+    return 0;
 
 }
 
