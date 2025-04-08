@@ -35,7 +35,7 @@
 // User-Defined Function Prototypes
 //-------------------------------------------------------------------------------------------------
 
-void getInput(string startingWord, string endingWord);
+void getInput(string& startingWord, string& endingWord);
 
 void radixSort(vector<string>& arr);
 
@@ -84,7 +84,7 @@ int main(void)
 // 
 // Get a starting word and an ending word from the user, checking for matching lengths.
 //-------------------------------------------------------------------------------------------------
-void getInput(string startingWord, string endingWord)
+void getInput(string& startingWord, string& endingWord)
 {
 
     //Do loop to execute until the two words are the same length.
