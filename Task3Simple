@@ -1,0 +1,57 @@
+/*
+// Task 3 Simple Unedited Version
+
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+int main() 
+{
+    // Initialize vector of strings
+    vector<string> nameOne = { "ForRt", "ForTh", "ForTo", "ForFi", "ForFo", "ForSe", "For", "ForEi", "ForNi", "For" };
+
+    string nameTwo = "For";
+
+    // Display initial vector
+    cout << "Initial names in vector:" << endl;
+
+    for (int counterForLoop = 0; counterForLoop < nameOne.size(); counterForLoop++) 
+    {
+        cout << counterForLoop << ": " << nameOne[counterForLoop] << endl;
+    }
+
+    // Remove all occurrences of nameTwo from the vector
+    for (auto it = nameOne.begin(); it != nameOne.end(); )
+    {
+        if (*it == nameTwo)
+        {
+            it = nameOne.erase(it); // erase returns the next iterator after the erased element
+        }
+        else
+        {
+            ++it;
+        }
+
+    }
+
+    // Display vector after removal
+    cout << endl << "Names in vector after removal of '" << nameTwo << "':" << endl;
+
+    if (nameOne.empty())
+    {
+        cout << "No items left in the vector." << endl;
+    }
+    else 
+    {
+        for (int counterForLoop = 0; counterForLoop < nameOne.size(); counterForLoop++)
+        {
+            cout << counterForLoop << ": " << nameOne[counterForLoop] << endl;
+        }
+    }
+
+    return 0;
+}
+
+*/
