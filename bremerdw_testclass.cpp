@@ -94,6 +94,33 @@ bool bremerdw_testclass::bremerdw_Test_isValidWord(void)
 }
 
 //-------------------------------------------------------------------------------------------------
+// Function - bremerdw_Test_isValidWord
+// 
+// Method for testing function "bremerdw_Test_isValidWord".
+//-------------------------------------------------------------------------------------------------
+bool bremerdw_testclass::bremerdw_Test_removeDuplicateWords(void)
+{
+
+	vector<string> nameOne = { "ForRt", "ForTh", "ForTo", "ForFi", "ForFo", "ForSe", "For", "ForEi", "ForNi", "For" };
+	vector<string> nameTwo = { "ForRt", "ForTh", "ForTo", "ForFi", "ForFo", "ForSe", "For", "ForEi", "ForNi" };
+	vector<string> nameFin;
+
+	Functions testObject;
+
+	nameFin = testObject.removeDuplicateWords(nameOne);
+
+	if (nameFin == nameTwo)
+	{
+
+		return true;
+
+	}
+
+	return false;
+
+}
+
+//-------------------------------------------------------------------------------------------------
 // Function - bremerdw_Test_RunAllTests
 // 
 // Method for running all tests.
@@ -122,9 +149,17 @@ bool bremerdw_testclass::bremerdw_RunAllTests(void)
 
 	}
 
+	if (bremerdw_Test_removeDuplicateWords() == false)
+	{
+
+		cout << "The function 'removeDuplicateWords' failed its test." << endl;
+
+	}
+
 	if ((bremerdw_Test_radixSort() == false) ||
 		(bremerdw_Test_isAllCaps() == false) ||
-		(bremerdw_Test_isValidWord() == false))
+		(bremerdw_Test_isValidWord() == false) ||
+		(bremerdw_Test_removeDuplicateWords() == false))
 	{
 
 		return false;

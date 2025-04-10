@@ -22,6 +22,11 @@ David: Implemented a radix sort of strings by copying over the class example, mo
 Task 3
 ---------------------------------------------------------------------------------------------------
 
+Chris: Developed the initial function code and test for removing duplicate words from a list of
+       words.
+
+David: Retrofitted Chris's function and test to fit within the established project framework,
+       making sure to preserve Chris's variable names and choice of coding operations.
 
 ---------------------------------------------------------------------------------------------------
 Task 4

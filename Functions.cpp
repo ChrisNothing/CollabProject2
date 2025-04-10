@@ -16,7 +16,7 @@
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-// Function - getInput
+// Function - BY DAVID - getInput
 // 
 // Get a starting word and an ending word from the user, checking for matching lengths.
 //-------------------------------------------------------------------------------------------------
@@ -109,7 +109,7 @@ void Functions::getInput(string& startingWord, string& endingWord)
 }
 
 //-------------------------------------------------------------------------------------------------
-// Function - radixSort
+// Function - BY DAVID - radixSort
 // 
 // Sort the passed-in array using a radix sorting algorithm (modified from provided code sample).
 //-------------------------------------------------------------------------------------------------
@@ -193,7 +193,7 @@ void Functions::radixSort(vector<string>& arr)
 }
 
 //-------------------------------------------------------------------------------------------------
-// Function - isAllCaps
+// Function - BY DAVID - isAllCaps
 // 
 // Check if the passed-in word consists entirely of capital letters and return true if it does.
 //-------------------------------------------------------------------------------------------------
@@ -217,7 +217,7 @@ bool Functions::isAllCaps(string wordToCheck)
 }
 
 //-------------------------------------------------------------------------------------------------
-// Function - isValidWord
+// Function - BY DAVID - isValidWord
 // 
 // Check if the passed-in word exists within the dictionary file and return true if it does.
 //-------------------------------------------------------------------------------------------------
@@ -257,5 +257,106 @@ bool Functions::isValidWord(string wordToCheck)
 
     //If a match was never found, return false.
     return false;
+
+}
+
+//-------------------------------------------------------------------------------------------------
+// Function - BY DAVID - getWordList
+// 
+// Extract each word in the dictionary of the specified length and return a set of such words.
+//-------------------------------------------------------------------------------------------------
+unordered_set<string> Functions::getWordList(int numberOfDigits)
+{
+
+    string currentWord;
+
+    fstream inFile;
+
+    unordered_set<string> wordList;
+
+    //Open the dictionary file.
+    inFile.open(DICTIONARY_FILE_NAME);
+
+    //Do loop to pass through the entire file.
+    do
+    {
+
+        //Get the next word from the input file.
+        getline(inFile, currentWord, '\n');
+
+        //If statement to check if the grabbed word is of the desired length.
+        if (currentWord.length() == numberOfDigits)
+        {
+
+            //If the word is of the desired length, add it to the word list.
+            wordList.insert(currentWord);
+
+        }
+
+    } while (inFile);
+    
+    //Close the dictionary file.
+    inFile.close();
+
+    //Return the word list.
+    return wordList;
+
+}
+
+//-------------------------------------------------------------------------------------------------
+// Function - BY CHRIS - removeDuplicateWords
+// 
+// Remove any duplicate words from a vector of strings and return the druncated vector.
+//-------------------------------------------------------------------------------------------------
+vector<string> Functions::removeDuplicateWords(vector<string> inputList)
+{
+
+    int startIndex = 0;
+
+    string nameOne;
+    string nameTwo;
+
+    vector<string> outputList = inputList;
+
+    //If statement to check if the vector is not empty.
+    if (outputList.size() != 0)
+    {
+
+        //For loop to pass through each word in the list.
+        for (string word : outputList)
+        {
+
+            //Extract the current word to be checked against.
+            nameOne = word;
+
+            //Increment the start index for checking subsequent words.
+            startIndex++;
+
+            //For loop to pass through every word in the vector after the word being checked against.
+            for (size_t counterForLoop = startIndex; counterForLoop < outputList.size(); counterForLoop++)
+            {
+
+                //Extract the current word being compared.
+                nameTwo = outputList[counterForLoop];
+
+                //If statement to check if a match was found.
+                if (nameOne == nameTwo)
+                {
+
+                    //Remove the found match from the list.
+                    outputList.erase(outputList.begin() + counterForLoop);
+
+                    //Decrement the inner loop counter to compensate for this removal.
+                    counterForLoop--;
+
+                }
+
+            }
+
+        }
+
+    }
+
+    return outputList;
 
 }
