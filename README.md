@@ -43,5 +43,6 @@ Other Tasks Not Included In The Above Sections
 ---------------------------------------------------------------------------------------------------
 David: General management of files and directory structure.
        Completed the function for reading input from the user.
+       Implemented functions for checking the validity of user input.
 
 **************************************************************************************************/
