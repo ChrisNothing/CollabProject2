@@ -18,14 +18,14 @@
     <ClCompile Include="DB_CE_Project2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Standards.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="bremerdw_testclass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Functions.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Standards.cpp">
+      <Filter>Resource Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

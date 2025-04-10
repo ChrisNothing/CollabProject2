@@ -62,7 +62,7 @@ void PrintHeading(ostream& outFile, int width, string courseAndExercise)
 {
 
 	const string COLLEGE = "SUNY Broome Community College";
-	const string NAME = PROGRAMMER_A + " & " + PROGRAMMER_B;;
+	const string NAME = PROGRAMMER_A + " & " + PROGRAMMER_B;
 
 	//Output single divider line to the destination.
 	PrintDivider(outFile, width, '-');

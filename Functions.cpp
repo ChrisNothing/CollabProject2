@@ -190,3 +190,121 @@ bool Functions::isAllCaps(string wordToCheck)
     return true;
 
 }
+
+//-------------------------------------------------------------------------------------------------
+// Task 3 Simple Unedited Version
+//-------------------------------------------------------------------------------------------------
+void Functions::TaskThreeFunction()
+{
+    // Initialize vector of strings
+    vector<string> nameOne = { "ForRt", "ForTh", "ForTo", "ForFi", "ForFo", "ForSe", "For", "ForEi", "ForNi", "For" };
+
+    string nameTwo = "For";
+
+    // Display initial vector
+    cout << "Initial names in vector:" << endl;
+
+    for (int counterForLoop = 0; counterForLoop < nameOne.size(); counterForLoop++)
+    {
+        cout << counterForLoop << ": " << nameOne[counterForLoop] << endl;
+    }
+
+    // Remove all occurrences of nameTwo from the vector
+    for (auto it = nameOne.begin(); it != nameOne.end(); )
+    {
+        if (*it == nameTwo)
+        {
+            it = nameOne.erase(it); // erase returns the next iterator after the erased element
+        }
+        else
+        {
+            ++it;
+        }
+
+    }
+
+    // Display vector after removal
+    cout << endl << "Names in vector after removal of '" << nameTwo << "':" << endl;
+
+    if (nameOne.empty())
+    {
+        cout << "No items left in the vector." << endl;
+    }
+    else
+    {
+        for (int counterForLoop = 0; counterForLoop < nameOne.size(); counterForLoop++)
+        {
+            cout << counterForLoop << ": " << nameOne[counterForLoop] << endl;
+        }
+    }
+}
+
+//-------------------------------------------------------------------------------------------------
+// findValidChrisWords - Function to find all valid transformations of a word, Tasks 4.
+//-------------------------------------------------------------------------------------------------
+vector<string> Functions::findValidChrisWords(const string& word, const vector<string>& wordList)
+{
+    vector<string> validWords;
+
+    // Iterate through each position of the word
+    for (int counterForLoop = 0; counterForLoop < word.length(); counterForLoop++)
+    {
+        // Try replacing the character at position counterForLoop with all letters from 'a' to 'z'
+        for (char charMajor = 'a'; charMajor <= 'z'; charMajor++)
+        {
+            if (charMajor == word[counterForLoop])
+            {
+                continue; // Skip the character if it's the same as the current one
+            }
+
+            // Create a new word by replacing the character at position counterForLoop
+            string transformed = word;
+            transformed[counterForLoop] = charMajor;
+
+            // Check if the transformed word exists in the wordList
+            bool found = false;
+
+
+            for (size_t sizeCounter = 0; sizeCounter < wordList.size(); sizeCounter++)
+            {
+                if (transformed == wordList[sizeCounter])
+                {
+                    //Chatgpt gave me (Chris) this nice little function. Need to ask if this is okay.
+                    validWords.push_back(transformed);
+                    found = true;
+                    break;
+                }
+            }
+        }
+    }
+
+    return validWords;
+}
+
+void Functions::TaskFourFunction()
+{
+    // Example word list
+    vector<string> wordList = { "fend", "bend", "rend", "bare", "fire", "tear", "care", "mare","land", "lens", "pend", "send", "tend", "bore", "more", "shore", "four", "pour", "sore", "core", "rope", "hope", "kope", "vote", "note", "wore", "lake", "fake", "cake", "mint", "hint", "link", "tank", "mask", "bark", "park", "warp", "cart", "dart", "star", "char" };
+
+    // Test word
+    string initialWord = "Hare";
+
+    // Find valid words
+    vector<string> validWords = findValidChrisWords(initialWord, wordList);
+
+    // Display the results
+    cout << "We will be using the word '" << initialWord << "':" << endl;
+    cout << "With the list provided we will begin to see if there's any word with a mismatch letter. " << endl;
+
+    if (validWords.empty())
+    {
+        cout << "No valid mismatched words found." << endl;
+    }
+    else
+    {
+        for (size_t sizeCounter = 0; sizeCounter < validWords.size(); sizeCounter++)
+        {
+            cout << validWords[sizeCounter] << endl;
+        }
+    }
+}

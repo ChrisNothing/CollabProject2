@@ -35,6 +35,12 @@ public:
 
 	bool isAllCaps(string wordToCheck);
 
+	void TaskThreeFunction();
+
+	vector<string> findValidChrisWords(const string& word, const vector<string>& wordList);
+
+	void TaskFourFunction();
+
 };
 
 #endif
