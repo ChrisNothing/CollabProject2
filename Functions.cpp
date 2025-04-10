@@ -23,11 +23,18 @@
 void Functions::getInput(string& startingWord, string& endingWord)
 {
 
+    //Output instructions to the user.
+    cout << "This program simulates the game Word Ladder. Given a starting word and an" << endl;
+    cout << "ending word, a sequence of single-letter transformations from the starting" << endl;
+    cout << "word to the ending word will be produced, where the intermediate steps will" << endl;
+    cout << "also be real words. For this program, two words of the same length, between" << endl;
+    cout << "three and five letters in length, are accepted. Have fun!" << endl << endl;
+
     //Do loop to execute until the two words are the same length.
     do
     {
 
-        //Do loop to execute until the first word is of valid format.
+        //Do loop to execute until the first word is of valid format and a real word.
         do
         {
 
@@ -36,19 +43,28 @@ void Functions::getInput(string& startingWord, string& endingWord)
             getline(cin, startingWord, '\n');
             cout << endl;
 
-            //If statement to check if the word is invalid.
+            //If statement to check if the word format is invalid.
             if (isAllCaps(startingWord) == false)
             {
 
                 //Output a warning and prompt to retry.
                 cout << "The word must be in ALL CAPS with no special characters. Try again.";
-                cout << endl;
+                cout << endl << endl;
+
+            }
+            //If the first check is passed, now check if the word is a real word.
+            else if (isValidWord(startingWord) == false)
+            {
+
+                //Output a warning and prompt to retry.
+                cout << "That word is not a real word, or is otherwise unsupported. Try again.";
+                cout << endl << endl;
 
             }
 
-        } while (isAllCaps(startingWord) == false);
+        } while (isAllCaps(startingWord) == false || isValidWord(startingWord) == false);
 
-        //Do loop to execute until the second word is of valid format.
+        //Do loop to execute until the second word is of valid format and a real word.
         do
         {
 
@@ -57,17 +73,26 @@ void Functions::getInput(string& startingWord, string& endingWord)
             getline(cin, endingWord, '\n');
             cout << endl;
 
-            //If statement to check if the word is invalid.
+            //If statement to check if the word format is invalid.
             if (isAllCaps(endingWord) == false)
             {
 
                 //Output a warning and prompt to retry.
                 cout << "The word must be in ALL CAPS with no special characters. Try again.";
-                cout << endl;
+                cout << endl << endl;
+
+            }
+            //If the first check is passed, now check if the word is a real word.
+            else if (isValidWord(endingWord) == false)
+            {
+
+                //Output a warning and prompt to retry.
+                cout << "That word is not a real word, or is otherwise unsupported. Try again.";
+                cout << endl << endl;
 
             }
 
-        } while (isAllCaps(endingWord) == false);
+        } while (isAllCaps(endingWord) == false || isValidWord(endingWord) == false);
 
         //If statement to check if both words are the same length.
         if (startingWord.length() != endingWord.length())
@@ -75,7 +100,7 @@ void Functions::getInput(string& startingWord, string& endingWord)
 
             //Output a warning and prompt to retry.
             cout << "The two words must be of the exact same length. Try again.";
-            cout << endl;
+            cout << endl << endl;
 
         }
 
@@ -170,7 +195,7 @@ void Functions::radixSort(vector<string>& arr)
 //-------------------------------------------------------------------------------------------------
 // Function - isAllCaps
 // 
-// Check if the passed-in word consists entirely of capital letters and returns true if it does.
+// Check if the passed-in word consists entirely of capital letters and return true if it does.
 //-------------------------------------------------------------------------------------------------
 bool Functions::isAllCaps(string wordToCheck)
 {
@@ -188,5 +213,49 @@ bool Functions::isAllCaps(string wordToCheck)
     }
 
     return true;
+
+}
+
+//-------------------------------------------------------------------------------------------------
+// Function - isValidWord
+// 
+// Check if the passed-in word exists within the dictionary file and return true if it does.
+//-------------------------------------------------------------------------------------------------
+bool Functions::isValidWord(string wordToCheck)
+{
+
+    string currentWord;
+
+    fstream inFile;
+
+    //Open the dictionary file.
+    inFile.open(DICTIONARY_FILE_NAME);
+
+    //Do loop to pass through the entire file.
+    do
+    {
+
+        //Get the next word from the input file.
+        getline(inFile, currentWord, '\n');
+
+        //If statement to check if the grabbed word equals the word being checked.
+        if (currentWord == wordToCheck)
+        {
+
+            //Close the dictionary file.
+            inFile.close();
+
+            //If a match is found, return true.
+            return true;
+
+        }
+
+    } while (inFile);
+
+    //Close the dictionary file.
+    inFile.close();
+
+    //If a match was never found, return false.
+    return false;
 
 }

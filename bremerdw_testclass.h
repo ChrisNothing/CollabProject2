@@ -32,6 +32,7 @@ public:
 
     bool bremerdw_Test_radixSort(void);
     bool bremerdw_Test_isAllCaps(void);
+    bool bremerdw_Test_isValidWord(void);
 
     bool bremerdw_RunAllTests(void);
 
