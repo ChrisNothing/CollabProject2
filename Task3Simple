@@ -1,15 +1,9 @@
 /*
+
 //-------------------------------------------------------------------------------------------------
-// Task 3 Simple Unedited Version
+// TaskThreeFunction - Task 3 Simple Unedited Version
 //-------------------------------------------------------------------------------------------------
-
-#include <iostream>
-#include <vector>
-#include <string>
-
-using namespace std;
-
-int main() 
+void Functions::TaskThreeFunction()
 {
     // Initialize vector of strings
     vector<string> nameOne = { "ForRt", "ForTh", "ForTo", "ForFi", "ForFo", "ForSe", "For", "ForEi", "ForNi", "For" };
@@ -19,7 +13,7 @@ int main()
     // Display initial vector
     cout << "Initial names in vector:" << endl;
 
-    for (int counterForLoop = 0; counterForLoop < nameOne.size(); counterForLoop++) 
+    for (int counterForLoop = 0; counterForLoop < nameOne.size(); counterForLoop++)
     {
         cout << counterForLoop << ": " << nameOne[counterForLoop] << endl;
     }
@@ -45,32 +39,19 @@ int main()
     {
         cout << "No items left in the vector." << endl;
     }
-    else 
+    else
     {
         for (int counterForLoop = 0; counterForLoop < nameOne.size(); counterForLoop++)
         {
             cout << counterForLoop << ": " << nameOne[counterForLoop] << endl;
         }
     }
-
-    return 0;
 }
 
-*/
-
 //-------------------------------------------------------------------------------------------------
-//Tasks 4.
+// findValidChrisWords - Function to find all valid transformations of a word, Tasks 4.
 //-------------------------------------------------------------------------------------------------
-
-/*
-#include <iostream>
-#include <vector>
-#include <string>
-
-using namespace std;
-
-// Function to find all valid transformations of a word
-vector<string> findValidWords(const string& word, const vector<string>& wordList)
+vector<string> Functions::findValidChrisWords(const string& word, const vector<string>& wordList)
 {
     vector<string> validWords;
 
@@ -109,16 +90,19 @@ vector<string> findValidWords(const string& word, const vector<string>& wordList
     return validWords;
 }
 
-int main()
+//-------------------------------------------------------------------------------------------------
+// TaskFourFunction - Function to find all valid transformations of a word, Tasks 4.
+//-------------------------------------------------------------------------------------------------
+void Functions::TaskFourFunction()
 {
     // Example word list
-    vector<string> wordList = { "fend", "bend", "rend", "bare", "fire", "tear", "care", "mare","land", "lens", "pend", "send", "tend", "bore", "more", "shore", "four", "pour", "sore", "core", "rope", "hope", "kope", "vote", "note", "wore", "lake", "fake", "cake", "mint", "hint", "link", "tank", "mask", "bark", "park", "warp", "cart", "dart", "star", "char" };
+    vector<string> wordList = { "fend", "bend", "rend", "bare", "fire", "tear", "care", "mare","land", "lens", "pend", "send", "tend", "bore", "more", "seoh", "four", "pour", "sore", "core", "rope", "hope", "kope", "vote", "note", "wore", "lake", "fake", "cake", "mint", "hint", "link", "tank", "mask", "bark", "park", "warp", "cart", "dart", "star", "char" };
 
     // Test word
     string initialWord = "Hare";
 
     // Find valid words
-    vector<string> validWords = findValidWords(initialWord, wordList);
+    vector<string> validWords = findValidChrisWords(initialWord, wordList);
 
     // Display the results
     cout << "We will be using the word '" << initialWord << "':" << endl;
@@ -135,8 +119,6 @@ int main()
             cout << validWords[sizeCounter] << endl;
         }
     }
-
-    return 0;
 }
 
 */
