@@ -78,7 +78,6 @@ vector<string> Functions::findValidChrisWords(const string& word, const vector<s
             {
                 if (transformed == wordList[sizeCounter])
                 {
-                    //Chatgpt gave me (Chris) this nice little function. Need to ask if this is okay.
                     validWords.push_back(transformed);
                     found = true;
                     break;
