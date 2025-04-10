@@ -69,9 +69,34 @@ bool bremerdw_testclass::bremerdw_Test_isAllCaps(void)
 }
 
 //-------------------------------------------------------------------------------------------------
-// Function - bremerdw_Test_isAllCaps
+// Function - bremerdw_Test_isValidWord
 // 
-// Method for testing function "bremerdw_Test_isAllCaps".
+// Method for testing function "bremerdw_Test_isValidWord".
+//-------------------------------------------------------------------------------------------------
+bool bremerdw_testclass::bremerdw_Test_isValidWord(void)
+{
+
+	string testString1 = "QUIRK";
+	string testString2 = "FLARP";
+
+	Functions testObject;
+
+	if ((testObject.isValidWord(testString1) == true) &&
+		(testObject.isValidWord(testString2) == false))
+	{
+
+		return true;
+
+	}
+
+	return false;
+
+}
+
+//-------------------------------------------------------------------------------------------------
+// Function - bremerdw_Test_RunAllTests
+// 
+// Method for running all tests.
 //-------------------------------------------------------------------------------------------------
 bool bremerdw_testclass::bremerdw_RunAllTests(void)
 {
@@ -90,8 +115,16 @@ bool bremerdw_testclass::bremerdw_RunAllTests(void)
 
 	}
 
+	if (bremerdw_Test_isValidWord() == false)
+	{
+
+		cout << "The function 'isValidWord' failed its test." << endl;
+
+	}
+
 	if ((bremerdw_Test_radixSort() == false) ||
-		(bremerdw_Test_isAllCaps() == false))
+		(bremerdw_Test_isAllCaps() == false) ||
+		(bremerdw_Test_isValidWord() == false))
 	{
 
 		return false;
