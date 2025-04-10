@@ -43,6 +43,10 @@ public:
 
 	bool isValidWord(string wordToCheck);
 
+	unordered_set<string> getWordList(int numberOfDigits);
+
+	vector<string> removeDuplicateWords(vector<string> inputList);
+
 };
 
 #endif
