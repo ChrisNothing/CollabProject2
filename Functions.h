@@ -49,7 +49,7 @@ public:
 
 	vector<string> getDescendantWords(const string& word, const unordered_set<string>& wordList);
 
-	vector<string> solveWordLadder(string startingWord, string endingWord, unordered_set<string>& wordList);
+	vector<string> solveWordLadder(string startingWord, string endingWord);
 
 	void printWordLadder(vector<string> wordLadderPath);
 

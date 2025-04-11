@@ -412,10 +412,85 @@ vector<string> Functions::getDescendantWords(const string& word, const unordered
 // 
 // Generate a path from the starting word to the ending word using single-letter transformations.
 //-------------------------------------------------------------------------------------------------
-vector<string> Functions::solveWordLadder(string startingWord, string endingWord, unordered_set<string>& wordList)
+vector<string> Functions::solveWordLadder(string startingWord, string endingWord)
 {
 
+    //Initialize an unordered set to hold the list of words.
+    unordered_set<string> wordList;
 
+    //Use the getWordList function to obtain a list of valid words using the length of the
+    //starting word (by the time this function is called, both words are equal length).
+    wordList = getWordList(startingWord.length());
+
+    //Initialize a stack to store the assorted paths that will be generated.
+    stack<vector<string>> wordLadderPaths;
+
+    //Initialize a vector to store the current path being worked on.
+    vector<string> currentPath;
+
+    //Push the starting word into the currently empty path vector.
+    currentPath.push_back(startingWord);
+
+    //Push the unfinished path into the stack of possible paths.
+    wordLadderPaths.push(currentPath);
+
+    //While loop to execute while the stack of paths is not empty.
+    while (wordLadderPaths.empty() == false)
+    {
+
+        //Variable to store the final word in the current path.
+        string finalWord;
+
+        //Get the top path from the stack to be manipulated in this step.
+        currentPath = wordLadderPaths.top();
+
+        //Pop the top path from the stack as it has now been copied to a variable.
+        wordLadderPaths.pop();
+
+        //Get the last word from the current path for comparison.
+        finalWord = currentPath.back();
+
+        //If statement to check if the last word in the current path is the desired ending word.
+        if (finalWord == endingWord)
+        {
+
+            //If so, the current path is successful and can be returned immediately.
+            return currentPath;
+
+        }
+
+        //Initialize a vector to store all descendant words of the final word.
+        vector<string> descendantWords;
+
+        //Use the getDescendantWords function to obtain all valid single-letter transformations.
+        descendantWords = getDescendantWords(finalWord, wordList);
+
+        //For loop to pass through all the found descendant words (if no descendants are found,
+        //currentPath "dies" since this loop is skipped and no descendant paths are pushed back onto the stack).
+        for (string nextWord : descendantWords)
+        {
+
+            //Initialize a vector to store the path with the next word added.
+            vector<string> newPath;
+
+            //Copy the current path into the vector to store the continued path.
+            newPath = currentPath;
+
+            //Add the new descendant word to the new path.
+            newPath.push_back(finalWord);
+
+            //Push this new path onto the stack of possible paths.
+            wordLadderPaths.push(newPath);
+
+            //Remove the word that was just added from the local words list to prevent possible backwards traversal.
+            wordList.erase(finalWord);
+
+        }
+
+    }
+
+    //If no valid path ends up being found, return a null vector.
+    return { };
 
 }
 
@@ -427,6 +502,13 @@ vector<string> Functions::solveWordLadder(string startingWord, string endingWord
 void Functions::printWordLadder(vector<string> wordLadderPath)
 {
 
+    //For loop to pass through every word in the vector.
+    for (string word : wordLadderPath)
+    {
 
+        //Print the current word.
+        cout << word << endl << endl;
+
+    }
 
 }

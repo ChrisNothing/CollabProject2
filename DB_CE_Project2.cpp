@@ -35,6 +35,8 @@ int main(void)
     string startingWord;
     string endingWord;
 
+    vector<string> wordLadderPath;
+
     Functions funcObject;
 
     //---------------------------------------------------------------------------------------------
@@ -66,7 +68,11 @@ int main(void)
     //Get two words as input from the user.
     funcObject.getInput(startingWord, endingWord);
 
+    //Find a valid word ladder for the two words.
+    wordLadderPath = funcObject.solveWordLadder(startingWord, endingWord);
 
+    //Print the path that was found.
+    funcObject.printWordLadder(wordLadderPath);
 
     //---------------------------------------------------------------------------------------------
     // Closing Statements
