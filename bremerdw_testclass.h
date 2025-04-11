@@ -34,6 +34,7 @@ public:
     bool bremerdw_Test_isAllCaps(void);
     bool bremerdw_Test_isValidWord(void);
     bool bremerdw_Test_removeDuplicateWords(void);
+    bool bremerdw_Test_getDescendantWords(void);
 
     bool bremerdw_RunAllTests(void);
 
