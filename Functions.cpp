@@ -306,7 +306,7 @@ unordered_set<string> Functions::getWordList(int numberOfDigits)
 //-------------------------------------------------------------------------------------------------
 // Function - BY CHRIS - removeDuplicateWords
 // 
-// Remove any duplicate words from a vector of strings and return the druncated vector.
+// Remove any duplicate words from a vector of strings and return the truncated vector.
 //-------------------------------------------------------------------------------------------------
 vector<string> Functions::removeDuplicateWords(vector<string> inputList)
 {
@@ -318,8 +318,8 @@ vector<string> Functions::removeDuplicateWords(vector<string> inputList)
 
     vector<string> outputList = inputList;
 
-    //If statement to check if the vector is not empty.
-    if (outputList.size() != 0)
+    //If statement to check if the vector is not empty or single-element.
+    if (outputList.size() != 0 && outputList.size() != 1)
     {
 
         //For loop to pass through each word in the list.
@@ -358,5 +358,51 @@ vector<string> Functions::removeDuplicateWords(vector<string> inputList)
     }
 
     return outputList;
+
+}
+
+//-------------------------------------------------------------------------------------------------
+// Function - BY CHRIS - getDescendantWords
+// 
+// Find any words that differ from the passed-in word within the passed in set, and return them.
+//-------------------------------------------------------------------------------------------------
+vector<string> Functions::getDescendantWords(const string& word, const unordered_set<string>& wordList)
+{
+
+    vector<string> validWords;
+
+    // Iterate through each position of the word
+    for (size_t counterForLoop = 0; counterForLoop < word.length(); counterForLoop++)
+    {
+
+        // Try replacing the character at position counterForLoop with all letters from 'A' to 'Z'
+        for (char charMajor = 'A'; charMajor <= 'Z'; charMajor++)
+        {
+
+            if (charMajor == word[counterForLoop])
+            {
+
+                continue; // Skip the character if it's the same as the current one
+
+            }
+
+            // Create a new word by replacing the character at position counterForLoop
+            string transformed = word;
+            transformed[counterForLoop] = charMajor;
+
+            // Check if the transformed word exists in the wordList
+            if (wordList.find(transformed) != wordList.end())
+            {
+
+                //Chatgpt gave me (Chris) this nice little function. Need to ask if this is okay.
+                validWords.push_back(transformed);
+
+            }
+
+        }
+
+    }
+
+    return validWords;
 
 }

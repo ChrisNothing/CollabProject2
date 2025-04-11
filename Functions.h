@@ -47,6 +47,8 @@ public:
 
 	vector<string> removeDuplicateWords(vector<string> inputList);
 
+	vector<string> getDescendantWords(const string& word, const unordered_set<string>& wordList);
+
 };
 
 #endif

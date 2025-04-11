@@ -71,7 +71,7 @@ bool bremerdw_testclass::bremerdw_Test_isAllCaps(void)
 //-------------------------------------------------------------------------------------------------
 // Function - bremerdw_Test_isValidWord
 // 
-// Method for testing function "bremerdw_Test_isValidWord".
+// Method for testing function "isValidWord".
 //-------------------------------------------------------------------------------------------------
 bool bremerdw_testclass::bremerdw_Test_isValidWord(void)
 {
@@ -94,9 +94,9 @@ bool bremerdw_testclass::bremerdw_Test_isValidWord(void)
 }
 
 //-------------------------------------------------------------------------------------------------
-// Function - bremerdw_Test_isValidWord
+// Function - bremerdw_Test_removeDuplicateWords
 // 
-// Method for testing function "bremerdw_Test_isValidWord".
+// Method for testing function "removeDuplicateWords".
 //-------------------------------------------------------------------------------------------------
 bool bremerdw_testclass::bremerdw_Test_removeDuplicateWords(void)
 {
@@ -110,6 +110,41 @@ bool bremerdw_testclass::bremerdw_Test_removeDuplicateWords(void)
 	nameFin = testObject.removeDuplicateWords(nameOne);
 
 	if (nameFin == nameTwo)
+	{
+
+		return true;
+
+	}
+
+	return false;
+
+}
+
+//-------------------------------------------------------------------------------------------------
+// Function - bremerdw_Test_getDescendantWords
+// 
+// Method for testing function "getDescendantWords".
+//-------------------------------------------------------------------------------------------------
+bool bremerdw_testclass::bremerdw_Test_getDescendantWords(void)
+{
+
+	string initialWord = "HARE";
+
+	unordered_set<string> wordList = { "FEND", "BEND", "REND", "BARE", "FIRE", "TEAR", "CARE",
+		                               "MARE", "LAND", "LENS", "PEND", "SEND", "TEND", "BORE",
+		                               "MORE", "SHORE", "FOUR", "POUR", "SORE", "CORE", "ROPE",
+		                               "HOPE", "KOPE", "VOTE", "NOTE", "WORE", "LAKE", "FAKE",
+		                               "CAKE", "MINT", "HINT", "LINK", "TANK", "MASK", "BARK",
+		                               "PARK", "WARP", "CART", "DART", "STAR", "CHAR" };
+
+	vector<string> expectedResult = {"BARE", "CARE", "MARE"};
+	vector<string> actualResult;
+
+	Functions testObject;
+
+	actualResult = testObject.getDescendantWords(initialWord, wordList);
+
+	if (expectedResult == actualResult)
 	{
 
 		return true;
@@ -156,10 +191,18 @@ bool bremerdw_testclass::bremerdw_RunAllTests(void)
 
 	}
 
+	if (bremerdw_Test_getDescendantWords() == false)
+	{
+
+		cout << "The function 'getDescendantWords' failed its test." << endl;
+
+	}
+
 	if ((bremerdw_Test_radixSort() == false) ||
 		(bremerdw_Test_isAllCaps() == false) ||
 		(bremerdw_Test_isValidWord() == false) ||
-		(bremerdw_Test_removeDuplicateWords() == false))
+		(bremerdw_Test_removeDuplicateWords() == false) ||
+		(bremerdw_Test_getDescendantWords() == false))
 	{
 
 		return false;
