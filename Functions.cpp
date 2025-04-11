@@ -406,3 +406,27 @@ vector<string> Functions::getDescendantWords(const string& word, const unordered
     return validWords;
 
 }
+
+//-------------------------------------------------------------------------------------------------
+// Function - BY DAVID - solveWordLadder
+// 
+// Generate a path from the starting word to the ending word using single-letter transformations.
+//-------------------------------------------------------------------------------------------------
+vector<string> Functions::solveWordLadder(string startingWord, string endingWord, unordered_set<string>& wordList)
+{
+
+
+
+}
+
+//-------------------------------------------------------------------------------------------------
+// Function - BY DAVID - printWordLadder
+// 
+// Output the passed-in word ladder to the screen, in order with one word per line.
+//-------------------------------------------------------------------------------------------------
+void Functions::printWordLadder(vector<string> wordLadderPath)
+{
+
+
+
+}
