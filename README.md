@@ -45,9 +45,16 @@ David: Retrofitted Chris's function and test to fit within the established proje
        function needed only minor changes, mainly to work with capitals and unordered sets.
 
 ---------------------------------------------------------------------------------------------------
-Task 5 - 
+Task 5 - Started 2025-04-11, Functionally Completed 2025-04-14, Improved As Needed
 ---------------------------------------------------------------------------------------------------
 
+Chris: Wrote the intermediate function for finding descendant words, which is critical for the
+       operation of the word ladder solver function. Additionally provided debugging support
+       during the coding process.
+
+David: Developed the initial word ladder solver code using Chris's descendant words function, in
+       addition to help from Copilot to determine how to manipulate the stack without causing an
+       overflow error. Preliminary testing shows the solutions found are not optimal.
 
 ---------------------------------------------------------------------------------------------------
 Extras - 

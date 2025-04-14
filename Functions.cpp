@@ -277,15 +277,21 @@ unordered_set<string> Functions::getWordList(int numberOfDigits)
     //Open the dictionary file.
     inFile.open(DICTIONARY_FILE_NAME);
 
-    //Do loop to pass through the entire file.
-    do
+    //If statement to check if the file was opened successfully.
+    if (inFile.is_open() == false)
     {
 
-        //Get the next word from the input file.
-        getline(inFile, currentWord, '\n');
+        //Throw a runtime error (Copilot suggested this over returning an empty list).
+        throw runtime_error("The dictionary file could not be opened.");
 
-        //If statement to check if the grabbed word is of the desired length.
-        if (currentWord.length() == numberOfDigits)
+    }
+
+    //Do loop to pass through the entire file.
+    while (getline(inFile, currentWord, '\n'))
+    {
+
+        //If statement to check if the grabbed word exists and is of the desired length.
+        if (currentWord.empty() == false && currentWord.length() == numberOfDigits)
         {
 
             //If the word is of the desired length, add it to the word list.
@@ -293,7 +299,7 @@ unordered_set<string> Functions::getWordList(int numberOfDigits)
 
         }
 
-    } while (inFile);
+    }
     
     //Close the dictionary file.
     inFile.close();
@@ -415,6 +421,9 @@ vector<string> Functions::getDescendantWords(const string& word, const unordered
 vector<string> Functions::solveWordLadder(string startingWord, string endingWord)
 {
 
+    //Output a message to the screen that this process could take several seconds.
+    cout << "This process may take several seconds. Please wait..." << endl << endl;
+
     //Initialize an unordered set to hold the list of words.
     unordered_set<string> wordList;
 
@@ -477,13 +486,13 @@ vector<string> Functions::solveWordLadder(string startingWord, string endingWord
             newPath = currentPath;
 
             //Add the new descendant word to the new path.
-            newPath.push_back(finalWord);
+            newPath.push_back(nextWord);
 
             //Push this new path onto the stack of possible paths.
             wordLadderPaths.push(newPath);
 
             //Remove the word that was just added from the local words list to prevent possible backwards traversal.
-            wordList.erase(finalWord);
+            wordList.erase(nextWord);
 
         }
 
