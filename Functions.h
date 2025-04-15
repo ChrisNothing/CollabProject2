@@ -43,12 +43,15 @@ public:
 
 	bool isValidWord(string wordToCheck);
 
+	void mistakesWereMade();
+
 	unordered_set<string> getWordList(int numberOfDigits);
 
 	vector<string> removeDuplicateWords(vector<string> inputList);
 
 	vector<string> getDescendantWords(const string& word, const unordered_set<string>& wordList);
 
+	vector<string> solveWordLadderOptimal(string startingWord, string endingWord);
 	vector<string> solveWordLadder(string startingWord, string endingWord);
 
 	void printWordLadder(vector<string> wordLadderPath);

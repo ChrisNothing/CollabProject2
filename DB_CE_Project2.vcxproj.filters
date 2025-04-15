@@ -19,24 +19,24 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Standards.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="bremerdw_testclass.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Resource Files</Filter>
     </ClCompile>
     <ClCompile Include="Functions.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bremerdw_testclass.cpp">
+      <Filter>Resource Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Standards.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="bremerdw_testclass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Functions.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Standards.h">
+      <Filter>Resource Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

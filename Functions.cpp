@@ -3,7 +3,7 @@
 // 
 //Course:      CST 202
 //Exercise:    Project 2
-//Programmers: David Bremer & Chris Ellenberger
+//Programmers: David Bremer & Chris Elleneberger
 // 
 //Source File Contains:
 //	Multi-line member functions for Class "Functions".
@@ -16,7 +16,7 @@
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------
-// Function - BY DAVID - getInput
+// Function - BY David - getInput
 // 
 // Get a starting word and an ending word from the user, checking for matching lengths.
 //-------------------------------------------------------------------------------------------------
@@ -109,7 +109,7 @@ void Functions::getInput(string& startingWord, string& endingWord)
 }
 
 //-------------------------------------------------------------------------------------------------
-// Function - BY DAVID - radixSort
+// Function - BY David - radixSort
 // 
 // Sort the passed-in array using a radix sorting algorithm (modified from provided code sample).
 //-------------------------------------------------------------------------------------------------
@@ -193,7 +193,7 @@ void Functions::radixSort(vector<string>& arr)
 }
 
 //-------------------------------------------------------------------------------------------------
-// Function - BY DAVID - isAllCaps
+// Function - BY David - isAllCaps
 // 
 // Check if the passed-in word consists entirely of capital letters and return true if it does.
 //-------------------------------------------------------------------------------------------------
@@ -217,7 +217,7 @@ bool Functions::isAllCaps(string wordToCheck)
 }
 
 //-------------------------------------------------------------------------------------------------
-// Function - BY DAVID - isValidWord
+// Function - BY David - isValidWord
 // 
 // Check if the passed-in word exists within the dictionary file and return true if it does.
 //-------------------------------------------------------------------------------------------------
@@ -261,7 +261,7 @@ bool Functions::isValidWord(string wordToCheck)
 }
 
 //-------------------------------------------------------------------------------------------------
-// Function - BY DAVID - getWordList
+// Function - BY David - getWordList
 // 
 // Extract each word in the dictionary of the specified length and return a set of such words.
 //-------------------------------------------------------------------------------------------------
@@ -310,7 +310,7 @@ unordered_set<string> Functions::getWordList(int numberOfDigits)
 }
 
 //-------------------------------------------------------------------------------------------------
-// Function - BY CHRIS - removeDuplicateWords
+// Function - BY Chris - removeDuplicateWords
 // 
 // Remove any duplicate words from a vector of strings and return the truncated vector.
 //-------------------------------------------------------------------------------------------------
@@ -368,7 +368,7 @@ vector<string> Functions::removeDuplicateWords(vector<string> inputList)
 }
 
 //-------------------------------------------------------------------------------------------------
-// Function - BY CHRIS - getDescendantWords
+// Function - BY Chris - getDescendantWords
 // 
 // Find any words that differ from the passed-in word within the passed in set, and return them.
 //-------------------------------------------------------------------------------------------------
@@ -414,7 +414,82 @@ vector<string> Functions::getDescendantWords(const string& word, const unordered
 }
 
 //-------------------------------------------------------------------------------------------------
-// Function - BY DAVID - solveWordLadder
+// Function - BY Chris with help from Chatgpt? - solveWordLadderOptimal
+// 
+// Generate a path from the starting word to the ending word using single-letter transformations.
+//-------------------------------------------------------------------------------------------------
+vector<string> Functions::solveWordLadderOptimal(string startingWord, string endingWord)
+{
+
+    //Output a message to the screen that this process could take several seconds.
+    cout << "This process may take several seconds. Please wait..." << endl << endl;
+
+    // If start and end are the same, return immediately
+    if (startingWord == endingWord)
+    {
+        return { startingWord };
+    }
+
+    // Get the dictionary of words of the correct length
+    unordered_set<string> wordList = getWordList(startingWord.length());
+
+    // Quick check to make sure both words are in the dictionary
+    if (wordList.find(startingWord) == wordList.end() || wordList.find(endingWord) == wordList.end())
+    {
+        return {};
+    }
+
+    // Queue for BFS; stores the current path
+    queue<vector<string>> paths;
+    paths.push({ startingWord });
+
+    // Track visited words to avoid cycles
+    unordered_set<string> visited;
+    visited.insert(startingWord);
+
+    while (!paths.empty())
+    {
+        int levelSize = paths.size(); // For layer-wise BFS
+        unordered_set<string> levelVisited; // Track only for this layer to allow multiple paths to same word in layer
+
+        for (int counterForLoop = 0; counterForLoop < levelSize; ++counterForLoop)
+        {
+            vector<string> path = paths.front();
+            paths.pop();
+
+            string currentWord = path.back();
+            vector<string> neighbors = getDescendantWords(currentWord, wordList);
+
+            for (string& neighbor : neighbors)
+            {
+                if (visited.find(neighbor) != visited.end())
+                {
+                    continue;
+                }
+
+                vector<string> newPath = path;
+                newPath.push_back(neighbor);
+
+                if (neighbor == endingWord)
+                {
+                    return newPath;
+                }
+
+                paths.push(newPath);
+                levelVisited.insert(neighbor);
+            }
+        }
+
+        // Add all words visited at this BFS layer to global visited set
+        visited.insert(levelVisited.begin(), levelVisited.end());
+    }
+
+    // If we get here, no path was found
+    return {};
+}
+
+//-------------------------------------------------------------------------------------------------
+// Function - BY David - solveWordLadder
 // 
 // Generate a path from the starting word to the ending word using single-letter transformations.
 //-------------------------------------------------------------------------------------------------
@@ -504,20 +579,131 @@ vector<string> Functions::solveWordLadder(string startingWord, string endingWord
 }
 
 //-------------------------------------------------------------------------------------------------
-// Function - BY DAVID - printWordLadder
+// Function - BY David Edited by Chris - printWordLadder
 // 
 // Output the passed-in word ladder to the screen, in order with one word per line.
 //-------------------------------------------------------------------------------------------------
 void Functions::printWordLadder(vector<string> wordLadderPath)
 {
-
-    //For loop to pass through every word in the vector.
-    for (string word : wordLadderPath)
+    for (size_t counterForLoop = 0; counterForLoop < wordLadderPath.size(); ++counterForLoop)
     {
+        cout << wordLadderPath[counterForLoop] << endl;
 
-        //Print the current word.
-        cout << word << endl << endl;
+        if (counterForLoop > 0)
+        {
+            string prev = wordLadderPath[counterForLoop - 1];
+            string curr = wordLadderPath[counterForLoop];
+
+            for (size_t forCounterLoop = 0; forCounterLoop < curr.length(); ++forCounterLoop)
+            {
+                if (prev[forCounterLoop] != curr[forCounterLoop])
+                {
+                    cout << "^ Letter changed at position " << forCounterLoop + 1
+                        << " from '" << prev[forCounterLoop] << "' to '" << curr[forCounterLoop] << "'" << endl << endl;
+                    
+                    // Only one letter changes per step, so we can break early
+                    break; 
+                }
+            }
+        }
+        else
+        {
+            cout << endl;
+        }
+    }
+}
+
+//-------------------------------------------------------------------------------------------------
+//mistakesWereMade - The main function for all the output and inputs
+//-------------------------------------------------------------------------------------------------
+void Functions::mistakesWereMade()
+{
+
+    //---------------------------------------------------------------------------------------------
+    // Variable Declaration (Yes, I did steal this idea from you)
+    //---------------------------------------------------------------------------------------------
+    string startingWord;
+    string endingWord;
+    bool trueFalse = false;
+    string falseTrue;
+    int oneTwo = 0;
+
+    vector<string> wordLadderPath;
+
+    // Main loop to continue prompting the user for new word ladders
+    while (!trueFalse)
+    {
+        //Get two words as input from the user.
+        getInput(startingWord, endingWord);
+
+        // Input validation loop for choosing solving method
+        while (oneTwo != 1 && oneTwo != 2)
+        {
+
+            cout << "Do you wish for the {1} optimal route or the {2} non-optimal route? ";
+            cin >> oneTwo;
+
+            PrintDivider(cout, 100, '-');
+
+            // Handle non-integer or invalid input
+            if (cin.fail())
+            {
+                cin.clear(); // clear bad input flag
+                cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard invalid input
+                oneTwo = 0;
+                cout << "Invalid input. Please enter 1 or 2." << endl;
+                continue;
+            }
+
+            // Determine which solve method to use based on user input
+            switch (oneTwo)
+            {
+            case 1:
+
+                //Find a valid word ladder for the two words.
+                wordLadderPath = solveWordLadderOptimal(startingWord, endingWord);
+                break;
+
+            case 2:
+                //Find a valid word ladder for the two words.
+                wordLadderPath = solveWordLadder(startingWord, endingWord);
+                break;
+            default:
+                cout << "Try Again. Please choose 1 or 2 " << endl;
+                break;
+            }
+
+
+        }
+
+        oneTwo = 0;
+
+        //Print the path that was found.
+        printWordLadder(wordLadderPath);
+
+        PrintDivider(cout, 100, '-');
+
+        // Ask the user if they want to try another word pair
+        cout << "Do you wish to try another set of words?" << endl;
+        cout << "Type: Y will work for yes or something to end " << endl;
+        cout << "Enter here. ";
+        cin >> falseTrue;
+        PrintDivider(cout, 100, '-');
+
+        // Determine if user wants to continue
+        if (falseTrue != "Y" && falseTrue != "Yes" && falseTrue != "yes" && falseTrue != "y")
+        {
+
+            if (falseTrue == "something" || falseTrue == "Something")
+            {
+                cout << "Funny..." << endl;
+            }
+
+            //If true then it's true
+            trueFalse = true;
+
+        }
+
 
     }
-
 }

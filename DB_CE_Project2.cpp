@@ -32,11 +32,6 @@ int main(void)
     // Variable Declaration
     //---------------------------------------------------------------------------------------------
 
-    string startingWord;
-    string endingWord;
-
-    vector<string> wordLadderPath;
-
     Functions funcObject;
 
     //---------------------------------------------------------------------------------------------
@@ -61,18 +56,7 @@ int main(void)
     //Print the standard course heading to the screen.
     PrintHeading(cout, 100, "CST 202 - Project 2");
 
-    //---------------------------------------------------------------------------------------------
-    // Project Exercise Body
-    //---------------------------------------------------------------------------------------------
-
-    //Get two words as input from the user.
-    funcObject.getInput(startingWord, endingWord);
-
-    //Find a valid word ladder for the two words.
-    wordLadderPath = funcObject.solveWordLadder(startingWord, endingWord);
-
-    //Print the path that was found.
-    funcObject.printWordLadder(wordLadderPath);
+    funcObject.mistakesWereMade();
 
     //---------------------------------------------------------------------------------------------
     // Closing Statements
