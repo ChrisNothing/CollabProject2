@@ -16,6 +16,7 @@
 
 #include <algorithm>
 #include <cmath>
+#include <conio.h>
 #include <ctime>
 #include <fstream>
 #include <iomanip>

@@ -9,17 +9,15 @@
 //  Main driver function for the current exercise.
 // 
 //Inputs:
-//  [TBD]
+//  Two words of equal length for which an optimal "Word Ladder" between them will be found.
 // 
 //Outputs:
-//  [TBD]
+//  A "Word Ladder" of optimal length between the two specified words, with the path length.
 // 
 //-------------------------------------------------------------------------------------------------
 
 #include "Standards.h"
 #include "Functions.h"
-
-#include "bremerdw_testclass.h"
 
 //-------------------------------------------------------------------------------------------------
 // Main Function
@@ -35,28 +33,10 @@ int main(void)
     Functions funcObject;
 
     //---------------------------------------------------------------------------------------------
-    // Test Execution
+    // Program Execution
     //---------------------------------------------------------------------------------------------
 
-    //Instantiate objects of the test classes.
-    bremerdw_testclass bremerdw_tests;
-
-    //Execute tests of all functions, and exit execution in the event of a failed test.
-    if (bremerdw_tests.bremerdw_RunAllTests() == false)
-    {
-
-        return -1;
-
-    }
-
-    //---------------------------------------------------------------------------------------------
-    // Opening Statements
-    //---------------------------------------------------------------------------------------------
-
-    //Print the standard course heading to the screen.
-    PrintHeading(cout, 100, "CST 202 - Project 2");
-
-    funcObject.mistakesWereMade();
+    funcObject.executeProgram();
 
     //---------------------------------------------------------------------------------------------
     // Closing Statements

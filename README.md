@@ -57,15 +57,41 @@ David: Developed the initial word ladder solver code using Chris's descendant wo
        overflow error. Preliminary testing shows the solutions found are not optimal.
 
 ---------------------------------------------------------------------------------------------------
-Extras - 
+Extras - Started 2025-04-15, Functionally Completed 2025-04-15, Improved As Needed
 ---------------------------------------------------------------------------------------------------
 
+Chris: Wrote the necessary methods to implement both required functions to complete the Extra
+       Credit tasks, including implementation into the main project branch. The program now works
+       from beginning to end, giving what we believe to be the optimal solution.
+
+David: Slightly modified the output appearance to be more concise. Commented and formatted where
+       needed. Cleaned up program flow to only use the optimal solution case (David's initial
+       sub-optimal solution function therefore goes unused). Marked all unused functions.
 
 ---------------------------------------------------------------------------------------------------
 Other Miscellaneous Tasks Not Included In The Above Sections
 ---------------------------------------------------------------------------------------------------
+
+Chris: Developed the main operative function that executes the user-facing operations.
+       Implemented a loop system to allow the user to play again within the same program instance.
+
 David: General management of files and directory structure.
        Completed the function for reading input from the user.
        Implemented functions for checking the validity of user input.
+       Took and uploaded the requested screenshot of program execution.
+       Removed test/temporary files from the main branch, as per the project directions.
+
+---------------------------------------------------------------------------------------------------
+Missing Features Or Potential Bugs
+---------------------------------------------------------------------------------------------------
+> There is no catch for if the user enters the same word twice. The program does execute, printing
+  a path of length 1 consisting only of the entered word, but an input validation would be useful.
+
+> There is no catch for if a path is never found. We have not been able to find an example where
+  this happens, and given the completeness of the given dictionary, such examples seem unlikely.
+
+> We had some trouble determining what the "proper" way to implement tests was for the project.
+  Both of us made test branches in GitHub, and the tests are not present in the main branch. We
+  hope this is acceptable for now, and hope to learn more about the "proper" way in the future.
 
 **************************************************************************************************/
